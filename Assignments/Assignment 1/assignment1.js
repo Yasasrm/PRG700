@@ -11,6 +11,8 @@
 let serverVerbs = ["GET","GET","GET","POST","GET","POST"];
 let serverPaths = ["/","/about","/contact","/login","/panel","/logout"];
 let serverResponses = ["Welcome to WEB700 Assignment 1","This assignment was prepared by Yasas Maddumage","Yasas Maddumage: yrmaddumage@myseneca.ca","User Logged In","Main Panel","Logout Complete"];
+let testVerbs = ["GET","POST"]						
+let testPaths = ["/","/about","/contact","/login","/panel","/logout","/randomPath1","/randomPath2"]
 
 function httpRequest(httpVerb, path){
     for (let i = 0; i < serverPaths.length; i++) {
@@ -21,6 +23,19 @@ function httpRequest(httpVerb, path){
     return {404 : `Unable to process ${httpVerb} request for ${path}`};
 }
 
-console.log(httpRequest("GET", "/"));
-console.log(httpRequest("GET", "/about"));
-console.log(httpRequest("PUT", "/")); 
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+}
+
+function randomRequest() {
+    let randVerb = testVerbs[getRandomInt(2)];
+    let randPath = testPaths[getRandomInt(8)];
+    let response = httpRequest(randVerb, randPath);
+    console.log(response)
+}
+
+function automateTests() {
+    setInterval(randomRequest, 1000);
+}
+
+automateTests();
