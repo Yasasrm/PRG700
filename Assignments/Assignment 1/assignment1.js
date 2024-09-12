@@ -7,3 +7,8 @@
 *  Name: Yasas Maddumage Student ID: 170308233 Date: 2024/09/12
 *
 ********************************************************************************/ 
+
+let serverVerbs = ["GET","GET","GET","POST","GET","POST"];
+let serverPaths = ["/","/about","/contact","/login","/panel","/logout"];
+let serverResponses = ["Welcome to WEB700 Assignment 1","This assignment was prepared by Yasas Maddumage","Yasas Maddumage: yrmaddumage@myseneca.ca","User Logged In","Main Panel","Logout Complete"];
+
