@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
 
+//Holds student and course data
 class Data {
     constructor(students, courses) {
         this.students = students;
@@ -9,6 +10,7 @@ class Data {
 
 let dataCollection = null;
 
+//Reads the JSON files asynchronously and initializes the dataCollection
 async function initialize() {
     try {
         const studentDataFromFile = await fs.readFile('./data/students.json', 'utf8');
@@ -24,6 +26,7 @@ async function initialize() {
     }
 }
 
+//Return promises resolving to the requested data(All students). If no data is found, they reject with a message.
 function getAllStudents() {
     return new Promise((resolve, reject) => {
         if (dataCollection.students.length === 0) {
@@ -34,6 +37,7 @@ function getAllStudents() {
     });
 }
 
+//Return promises resolving to the requested data(All students with TA=true). If no data is found, they reject with a message.
 function getTAs() {
     return new Promise((resolve, reject) => {
         const tas = dataCollection.students.filter(student => student.TA);
@@ -45,6 +49,7 @@ function getTAs() {
     });
 }
 
+//Return promises resolving to the requested data(All courses). If no data is found, they reject with a message.
 function getCourses() {
     return new Promise((resolve, reject) => {
         if (dataCollection.courses.length === 0) {
@@ -55,6 +60,7 @@ function getCourses() {
     });
 }
 
+//Export modules
 module.exports = {
     initialize,
     getAllStudents,

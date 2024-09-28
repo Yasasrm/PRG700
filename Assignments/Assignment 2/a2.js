@@ -12,7 +12,7 @@ const collegeData = require('./modules/collegeData');
 
 collegeData.initialize()
     .then(() => {
-        console.log("Initialization successful.");
+        //console.log("Initialization successful.");
         return collegeData.getAllStudents();
     })
     .then(students => {
