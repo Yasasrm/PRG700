@@ -34,6 +34,15 @@ app.get('/students', async (req, res) => {
     }
 });
 
+//App_URL/tas
+app.get('/tas', async (req, res) => {
+    try {
+        res.json(await collegeData.getTAs());
+    } catch (err) {
+        res.json({ message: "no results" });
+    }
+});
+
 // Initialize the data and start the server
 collegeData.initialize()
     .then(() => {
