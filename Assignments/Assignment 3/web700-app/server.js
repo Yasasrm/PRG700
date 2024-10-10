@@ -43,6 +43,15 @@ app.get('/tas', async (req, res) => {
     }
 });
 
+//App_URL/courses
+app.get('/courses', async (req, res) => {
+    try {
+        res.json(await collegeData.getCourses());
+    } catch (err) {
+        res.json({ message: "no results" });
+    }
+});
+
 // Initialize the data and start the server
 collegeData.initialize()
     .then(() => {
