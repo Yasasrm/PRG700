@@ -101,5 +101,3 @@ module.exports.getStudentsByCourse = function (course) {
         resolve(filteredStudents);
     });
 };
-
-
