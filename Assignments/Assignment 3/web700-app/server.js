@@ -10,16 +10,30 @@
 
 var HTTP_PORT = process.env.PORT || 8080;
 var express = require("express");
+const path = require('path');
 var app = express();
-const collegeData = require('./modules/collegeData');
+const collegeData = require("./modules/collegeData");
 
-// setup a 'route' to listen on the default url path
+// Set "views" folder as the static directory for serving HTML files
+app.use(express.static(path.join(__dirname, "views")));
+
+// Route to serve the home page
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.sendFile("home.html", { root: "views" });
+});
+
+// Route to serve the about page
+app.get("/about", (req, res) => {
+    res.sendFile("about.html", { root: "views" });
+});
+
+// Route to serve the htmlDemo page
+app.get("/htmlDemo", (req, res) => {
+    res.sendFile("htmlDemo.html", { root: "views" });
 });
 
 //App_URL/students?course=?
-app.get('/students', async (req, res) => {
+app.get("/students", async (req, res) => {
     const course = req.query.course;
     try {
         let students;
@@ -35,7 +49,7 @@ app.get('/students', async (req, res) => {
 });
 
 //App_URL/tas
-app.get('/tas', async (req, res) => {
+app.get("/tas", async (req, res) => {
     try {
         res.json(await collegeData.getTAs());
     } catch (err) {
@@ -44,13 +58,28 @@ app.get('/tas', async (req, res) => {
 });
 
 //App_URL/courses
-app.get('/courses', async (req, res) => {
+app.get("/courses", async (req, res) => {
     try {
         res.json(await collegeData.getCourses());
     } catch (err) {
         res.json({ message: "no results" });
     }
 });
+
+//App_URL/student/num
+app.get("/student/:num", async (req, res) => {
+    const studentId = req.params.num;
+    try {
+        res.json(await collegeData.getStudentByNum(studentId));
+    } catch (err) {
+        res.json({ message: "no results" });
+    }
+});
+
+// Other route handlers.
+app.use((req, res, next) => {
+    res.status(404).send("404 - We're unable to find what you're looking for.");
+  });
 
 // Initialize the data and start the server
 collegeData.initialize()
@@ -62,4 +91,6 @@ collegeData.initialize()
         console.log("Failed to initialize data:", err);
     });
 
+// Export the app for Vercel
+module.exports = app;
 

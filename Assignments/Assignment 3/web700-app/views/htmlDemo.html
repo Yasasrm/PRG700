@@ -4,11 +4,12 @@
 		<title>WEB700</title>
 		<meta charset="UTF-8" />
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="style/mainStyle.css" />
 	</head>
 
 	<body>
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-			<a class="navbar-brand" href="#">Student Name</a>
+			<a class="navbar-brand" href="https://www.linkedin.com/in/yasasrm" target="_blank">Yasas Maddumage</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -20,9 +21,9 @@
 					<li class="nav-item active"><a class="nav-link" href="/htmlDemo">Html Demo</a></li>
 				</ul>
 				<ul class="navbar-nav ml-auto">
-					<li class="nav-item"><a class="nav-link" href="/students">Students</a></li>
-					<li class="nav-item"><a class="nav-link" href="/tas">Teaching Assistants</a></li>
-					<li class="nav-item"><a class="nav-link" href="/courses">Courses</a></li>
+					<li class="nav-item"><a class="nav-link" href="/students" target="_blank">Students</a></li>
+					<li class="nav-item"><a class="nav-link" href="/tas" target="_blank">Teaching Assistants</a></li>
+					<li class="nav-item"><a class="nav-link" href="/courses" target="_blank">Courses</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -30,17 +31,122 @@
 		<div class="container">
 			<div class="row">
 				<main class="col-md-12">
-
-
-
 					<!-- Start your code here -->
-					
-					
-					
+					<h1>HTML5 and Express Routing Demo</h1>
+					<h2>Tables</h2>
+					<table>
+						<caption>Sample Table 1</caption>
+						<thead>
+							<tr>
+								<th>Header 1</th>
+								<th>Header 2</th>
+								<th>Header 3</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Row 1 Col 1</td>
+								<td rowspan="2">Rowspan Example</td>
+								<td>Row 1 Col 3</td>
+							</tr>
+							<tr>
+								<td>Row 2 Col 1</td>
+								<td>Row 2 Col 3</td>
+							</tr>
+							<tr>
+								<td colspan="3">Colspan Example</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="3">Table Footer</td>
+							</tr>
+						</tfoot>
+					</table>
+
+					<table>
+						<caption>Sample Table 2</caption>
+						<thead>
+							<tr>
+								<th>Header A</th>
+								<th>Header B</th>
+								<th>Header C</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Row A1</td>
+								<td>Row A2</td>
+								<td>Row A3</td>
+							</tr>
+							<tr>
+								<td>Row B1</td>
+								<td>Row B2</td>
+								<td>Row B3</td>
+							</tr>
+							<tr>
+								<td>Row C1</td>
+								<td>Row C2</td>
+								<td>Row C3</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="3">Table 2 Footer</td>
+							</tr>
+						</tfoot>
+					</table>
+
+					<p>This section demonstrates the use of HTML tables, including table headers, footers, and spanning rows and columns using rowspan and colspan.</p>
+
+					<h2>Lists</h2>
+					<ol>
+						<li>Ordered Item 1</li>
+						<li>Ordered Item 2</li>
+						<li>Ordered Item 3
+							<ul>
+								<li>Unordered Subitem 1</li>
+								<li>Unordered Subitem 2</li>
+								<li>Unordered Subitem 3</li>
+							</ul>
+						</li>
+						<li>Ordered Item 4</li>
+						<li>Ordered Item 5</li>
+					</ol>
+
+					<p>This section demonstrates the use of HTML lists, including both ordered and unordered lists, with a nested list example.</p>
+
+					<h2>Images</h2>
+					<img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Snowboarder_in_halfpipe.jpg" alt="Snowboarder in halfpipe">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Bowhead_Whale_NOAA.jpg/1920px-Bowhead_Whale_NOAA.jpg" alt="Bowhead Whale" width="500" height="333">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/a/af/Endangered_Florida_manatee_%28Trichechus_manatus%29_%287636816484%29.jpg" alt="Florida manatee" width="500" height="333">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/014_Wild_Red_Deer_Switzerland_Photo_by_Giles_Laurent.jpg/1920px-014_Wild_Red_Deer_Switzerland_Photo_by_Giles_Laurent.jpg" alt="Switzerland Red Deer" width="500" height="333">
+
+					<p>This section showcases images that are properly displayed with "alt" attributes, which provide alternative text in case the images cannot be displayed.</p>
+
+					<h2>Audio</h2>
+					<audio controls>
+						<source src="https://pat-crawford-sdds.netlify.app/shared/fall-2021/web700/A3/sample-audio.mp3" type="audio/mpeg">
+						<source src="https://pat-crawford-sdds.netlify.app/shared/fall-2021/web700/A3/sample-audio.ogg" type="audio/ogg">
+						Your browser does not support the audio element.
+					</audio>
+
+					<p>This section contains an HTML5 audio player with both MP3 and OGG formats to ensure cross-browser compatibility.</p>
+
+					<h2>Video</h2>
+					<video width="640" height="360" controls>
+						<source src="https://pat-crawford-sdds.netlify.app/shared/fall-2021/web700/A3/sample-video.mp4" type="video/mp4">
+						<source src="https://pat-crawford-sdds.netlify.app/shared/fall-2021/web700/A3/sample-video.ogg" type="video/ogg">
+						<source src="https://pat-crawford-sdds.netlify.app/shared/fall-2021/web700/A3/sample-video.webm" type="video/webm">
+						Your browser does not support the video tag.
+					</video>
+
+					<p>This section contains an HTML5 video player with multiple source formats for compatibility across different browsers and devices.</p>
+
+					<h2>YouTube Video</h2>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/SRXH9AbT280?si=GQqFiq0q1qPJwVv6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+					<p>This section contains an embedded iframe, which allows external content, like videos or other web pages, to be displayed directly within this webpage. In this example, I have embedded a YouTube video, which is a common use of the iframe element.</p>
 					<!-- End your code here  -->
-
-
-
 				</main>
 			</div>
 		</div>
