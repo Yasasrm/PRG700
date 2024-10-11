@@ -12,7 +12,7 @@ var HTTP_PORT = process.env.PORT || 8080;
 var express = require("express");
 const path = require('path');
 var app = express();
-const collegeData = require("./modules/collegeData");
+const collegeData = require(path.join(__dirname, "modules", "collegeData"));
 
 // Set "views" folder as the static directory for serving HTML files
 app.use(express.static(path.join(__dirname, "views")));
@@ -34,6 +34,8 @@ app.get("/htmlDemo", (req, res) => {
 
 //App_URL/students?course=?
 app.get("/students", async (req, res) => {
+    console.log('Loading students from:', path.resolve('./data/students.json'));
+
     const course = req.query.course;
     try {
         let students;
@@ -44,6 +46,7 @@ app.get("/students", async (req, res) => {
         }
         res.json(students);
     } catch (err) {
+        console.log(err);
         res.json({ message: "no results" });
     }
 });
@@ -53,6 +56,7 @@ app.get("/tas", async (req, res) => {
     try {
         res.json(await collegeData.getTAs());
     } catch (err) {
+        console.log(err);
         res.json({ message: "no results" });
     }
 });
@@ -62,6 +66,7 @@ app.get("/courses", async (req, res) => {
     try {
         res.json(await collegeData.getCourses());
     } catch (err) {
+        console.log(err);
         res.json({ message: "no results" });
     }
 });
@@ -72,13 +77,14 @@ app.get("/student/:num", async (req, res) => {
     try {
         res.json(await collegeData.getStudentByNum(studentId));
     } catch (err) {
+        console.log(err);
         res.json({ message: "no results" });
     }
 });
 
 // Other route handlers.
 app.use((req, res, next) => {
-    res.status(404).send("404 - We're unable to find what you're looking for.");
+    res.sendFile("error.html", { root: "views" });
   });
 
 // Initialize the data and start the server
