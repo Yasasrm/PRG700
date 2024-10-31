@@ -104,3 +104,18 @@ module.exports.getStudentsByCourse = function (course) {
         resolve(filteredStudents);
     });
 };
+
+// Add student
+module.exports.addStudent = function(studentData) {
+    return new Promise((resolve, reject) => {
+        if (!studentData) {
+            reject("No student data provided");
+        } else {
+            studentData.TA = studentData.TA !== undefined;
+            studentData.studentNum = dataCollection.students.length + 1;
+            dataCollection.students.push(studentData);
+            resolve();
+        }
+    });
+};
+

@@ -14,8 +14,14 @@ const path = require('path');
 var app = express();
 const collegeData = require(path.join(__dirname, "modules", "collegeData"));
 
+// Serve static files from the "public" directory
+app.use(express.static('public'));
+
 // Set "views" folder as the static directory for serving HTML files
 app.use(express.static(path.join(__dirname, "views")));
+
+// Body-parser middleware to handle form submissions
+app.use(express.urlencoded({ extended: true }));
 
 // Route to serve the home page
 app.get("/", (req, res) => {
@@ -80,6 +86,22 @@ app.get("/student/:num", async (req, res) => {
         console.log(err);
         res.json({ message: "no results" });
     }
+});
+
+//Add Student -get
+app.get('/students/add', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'addStudent.html'));
+});
+
+//Add Student -post
+app.post('/students/add', (req, res) => {
+    collegeData.addStudent(req.body)
+        .then(() => {
+            res.redirect('/students');
+        })
+        .catch((err) => {
+            res.status(500).send("Unable to add student");
+        });
 });
 
 // Other route handlers.
