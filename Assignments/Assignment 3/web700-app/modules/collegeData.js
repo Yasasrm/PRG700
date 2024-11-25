@@ -69,6 +69,17 @@ module.exports.getCourses = function(){
    });
 };
 
+module.exports.getCourseById = function(id) {
+    return new Promise((resolve, reject) => {
+        const course = dataCollection.courses.find(c => c.courseId === parseInt(id));
+        if (!course) {
+            reject("query returned 0 results");
+            return;
+        }
+        resolve(course);
+    });
+};
+
 module.exports.getStudentByNum = function (num) {
     return new Promise(function (resolve, reject) {
         var foundStudent = null;
@@ -118,4 +129,18 @@ module.exports.addStudent = function(studentData) {
         }
     });
 };
+
+//Update student
+module.exports.updateStudent = function(updatedStudent) {
+    return new Promise((resolve, reject) => {
+        const index = dataCollection.students.findIndex(s => s.studentNum === parseInt(updatedStudent.studentNum));
+        if (index === -1) {
+            reject("Student not found");
+            return;
+        }
+        dataCollection.students[index] = { ...dataCollection.students[index], ...updatedStudent };
+        resolve();
+    });
+};
+
 
