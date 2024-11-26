@@ -133,7 +133,7 @@ module.exports.addStudent = function(studentData) {
 //Update student
 module.exports.updateStudent = function(updatedStudent) {
     return new Promise((resolve, reject) => {
-        const index = dataCollection.students.findIndex(s => s.studentNum === parseInt(updatedStudent.studentNum));
+        const index = dataCollection.students.findIndex(s => parseInt(s.studentNum) === parseInt(updatedStudent.studentNum));
         if (index === -1) {
             reject("Student not found");
             return;

@@ -159,25 +159,30 @@ app.get('/students', async (req, res) => {
 //Get Student by id
 app.get("/student/:studentNum", (req, res) => {
     const studentNum = req.params.studentNum;
-
-    collegeData.getStudentByNum(studentNum)
-        .then((student) => {
-            res.render("student", { student: student });
-        })
-        .catch((err) => {
-            res.render("student", { message: "Student not found" });
-        });
+    Promise.all([
+        collegeData.getStudentByNum(studentNum),
+        collegeData.getCourses()                
+    ])
+    .then(([student, courses]) => {
+        res.render("student", { student, courses });
+    })
+    .catch((err) => {
+        console.log(err);
+        res.render("student", { message: "Student not found" });
+    });
 });
+
 
 //Update student
 app.post("/student/update", (req, res) => {
     const updatedStudent = req.body;
-
+    console.log(updatedStudent)
     collegeData.updateStudent(updatedStudent)
         .then(() => {
             res.redirect("/students");
         })
         .catch((err) => {
+            console.log(err);
             res.status(500).send("Unable to update student");
         });
 });
