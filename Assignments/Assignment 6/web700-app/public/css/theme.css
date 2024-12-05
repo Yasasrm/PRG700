@@ -1,0 +1,81 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* General Styling */
+body, html {
+    background: linear-gradient(135deg, #b0c0d8, #ffffff);
+    overflow: auto;
+    font-family: 'DynaPuff', 'Unlock';
+}
+
+/* Navigation Bar */
+.bg-light {
+    background-color: #ffffff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Navigation Brand */
+.navbar-brand {
+    color: #333333;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+/* Navigation Links */
+.nav-link {
+    color: #333333;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #FF6B6B;
+}
+
+/* Primary Button */
+.btn-primary {
+    background: linear-gradient(135deg, #FF6B6B, #FF3E3E);
+    border: none;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #FF3E3E, #FF6B6B);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.25);
+}
+
+/* Table Styling */
+table tr:nth-child(odd) td {
+    background-color: #f2f2f2;
+}
+table {
+    width: 70%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+/* Heading Elements */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'DynaPuff', 'Unlock';
+    color: #333333;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Anchor Links */
+a {
+    color: #0066cc;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #FF6B6B;
+}
+
+/* Fieldset Legends */
+legend {
+    font-weight: bold;
+    color: #444444;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}

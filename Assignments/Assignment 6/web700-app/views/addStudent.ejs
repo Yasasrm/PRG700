@@ -1,0 +1,78 @@
+<h2>Add New Student</h2>
+<form method="POST" action="/students/add">
+    <fieldset>
+        <legend>Personal Information</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="firstName">First Name:</label>
+                    <input type="text" id="firstName" name="firstName" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="lastName">Last Name:</label>
+                    <input type="text" id="lastName" name="lastName" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status" name="status" class="form-control" required>
+                        <option value="Full-Time">Full-Time</option>
+                        <option value="Part-Time">Part-Time</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Address Information</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="addressStreet">Address (Street):</label>
+                    <input type="text" id="addressStreet" name="addressStreet" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="addressCity">Address (City):</label>
+                    <input type="text" id="addressCity" name="addressCity" class="form-control">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="addressProvince">Address (Province):</label>
+                    <input type="text" id="addressProvince" name="addressProvince" class="form-control">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>Course Information</legend>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="course">Course:</label>
+                <select id="course" name="course" class="form-control" required>
+                    <% courses.forEach(course => { %>
+                        <option value="<%= course.courseId %>">
+                            <%= course.courseCode %> - <%= course.courseDescription %>
+                        </option>
+                    <% }); %>
+                </select>
+            </div>
+        </div>
+    </fieldset>
+    <br>
+
+    <button type="submit" class="btn btn-success">Add Student</button>
+</form>
