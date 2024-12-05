@@ -79,5 +79,10 @@
 
             <input type="submit" class="btn btn-primary float-right" value="Update Student" /><br /><br /><br />
         </form>
+        <hr />
+        <form method="post" action="/student/delete">
+            <input type="hidden" name="studentNum" value="<%=student.studentNum%>" />
+            <input type="submit" class="btn btn-danger float-right" value="Delete Student" />
+        </form>        
     </main>
 </div>

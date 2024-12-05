@@ -98,6 +98,13 @@ module.exports.updateStudent = function(studentData) {
         });
 };
 
+//Delete student
+module.exports.deleteStudentById = (id) => {
+    return Student.destroy({ where: { studentNum: id } })
+        .then(() => Promise.resolve())
+        .catch(() => Promise.reject("Unable to delete student"));
+};
+
 //Delete course
 module.exports.deleteCourseById = (id) => {
     return Course.destroy({ where: { courseId: id } })

@@ -204,6 +204,26 @@ app.post('/courses/add', (req, res) => {
         .catch(err => res.status(500).send('Unable to add course: ' + err));
 });
 
+app.post("/student/delete", async (req, res) => {
+    const studentNum = req.body.studentNum;
+    try {
+        await collegeData.deleteStudentById(studentNum);
+        res.redirect('/students');
+    } catch (err) {
+        res.status(404).json({ message: err });
+    }
+});
+
+app.post("/course/delete", async (req, res) => {
+    const courseId = req.body.courseId;
+    try {
+        await collegeData.deleteCourseById(courseId);
+        res.redirect('/courses');
+    } catch (err) {
+        res.status(404).json({ message: err });
+    }
+});
+
 // Other route handlers.
 app.use((req, res, next) => {
     res.sendFile("error.html", { root: "views" });
