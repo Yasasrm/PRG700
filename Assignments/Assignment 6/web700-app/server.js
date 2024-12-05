@@ -151,6 +151,19 @@ app.get("/course/:id", (req, res) => {
         });
 });
 
+//Update course
+app.post("/course/update", (req, res) => {
+    const updatedCourse = req.body;
+    collegeData.updateCourse(updatedCourse)
+        .then(() => {
+            res.redirect("/courses");
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(500).send("Unable to update student");
+        });
+});
+
 const getStudents = async (course) => {
     try {
         if (course) {

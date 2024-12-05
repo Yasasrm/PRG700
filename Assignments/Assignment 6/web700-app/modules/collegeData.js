@@ -127,6 +127,7 @@ module.exports.updateCourse = (courseData) => {
         }
     }
     return new Promise((resolve, reject) => {
+        console.log(courseData);
         Course.update(courseData, { where: { courseId: courseData.courseId } })
             .then(() => resolve())
             .catch(() => reject("unable to update course"));
