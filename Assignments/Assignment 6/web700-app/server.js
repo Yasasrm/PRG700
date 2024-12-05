@@ -19,6 +19,7 @@
 var HTTP_PORT = process.env.PORT || 8080;
 var express = require("express");
 const path = require('path');
+const { Client } = require('pg');
 var app = express();
 const collegeData = require(path.join(__dirname, "modules", "collegeData"));
 const ejs = require("ejs"); 
